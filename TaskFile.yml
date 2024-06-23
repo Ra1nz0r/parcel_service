@@ -1,0 +1,23 @@
+---
+version: '3'
+
+tasks:
+  run: # название задачи для запуска
+    desc: "Runs all '.go' files."
+    cmds:
+      - go run ./...
+      
+  test: # название задачи для запуска
+    desc: "Runs all test files without cache and with info."
+    cmds:
+      - go test -v ./... -count=1
+      
+  d_build: # название задачи для запуска
+    desc: "Build docker container."
+    cmds:
+      - docker build -t parcel_service .
+
+  d_run: # название задачи для запуска
+    desc: "Run terminal (-it) when container is running."
+    cmds:
+      - docker run -it parcel_service
