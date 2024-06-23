@@ -18,6 +18,16 @@ tasks:
       - docker build -t parcel_service .
 
   d_run: # название задачи для запуска
-    desc: "Run terminal (-it) when container is running."
+    desc: "Run container interactively."
     cmds:
-      - docker run -it parcel_service
+      - docker run --name="parcel_app" -it parcel_service
+
+  d_build_hub: # название задачи для запуска
+    desc: "Build docker container from DockerHub."
+    cmds:
+      - docker pull --platform linux/x86_64 ra1nz0r/parcel_service
+
+  d_run_hub: # название задачи для запуска
+    desc: "Run container interactively downloaded from DokerHub."
+    cmds:
+      - docker run --name="parcel_app" -it --platform linux/x86_64 ra1nz0r/parcel_service
